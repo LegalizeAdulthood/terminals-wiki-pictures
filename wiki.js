@@ -222,7 +222,7 @@ exports.main = function(server, args) {
     };
 
     if (args.length != 7) {
-        console.log("Usage: node ' + args[0] + ' user password auction_id manufacturer model");
+        console.log("Usage: node " + args[0] + " user password auction_id manufacturer model");
         return;
     }
 
