@@ -124,7 +124,8 @@ var context = {
             "",
             this.section_markup(),
             "",
-            "[[Category:" + this.manufacturer + "|" + this.model + "]]"
+            "[[Category:" + this.manufacturer + "|" + this.model + "]]",
+            "{{stub}}"
         ].join("\n");
     }
 };
