@@ -1,3 +1,3 @@
 var wiki = require('./wiki.js');
 
-wiki.main('terminals.classiccmp.org', process.argv);
+wiki.main('terminals-wiki.org', process.argv);
