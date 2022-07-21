@@ -9,7 +9,8 @@ function json_sanitize(text) {
         .replace(/\['/g, '["')
         .replace(/'\]/g, '"]')
         .replace(/',/g, '",')
-        .replace(/,'/g, ',"');
+        .replace(/,'/g, ',"')
+        .replace(/\\u002F/g, '/');
 }
 
 function text_after(prefix, text) {
@@ -49,13 +50,18 @@ function scrape_data(context, html) {
 
     data.seller = $('div.ux-seller-section__item--seller').text();
     data.seller = data.seller.substr(0, data.seller.indexOf(' '));
-    _.map(
-        _.find(JSON.parse(json_sanitize(args)),
+    args = JSON.parse(json_sanitize(args));
+    var picturePanel = _.find(args,
             function(item) {
                 return item[0] === 'ebay.viewItem.PicturePanel';
-            })[2]['fsImgList'],
+            });
+    var fsImageList = picturePanel[2]['fsImgList'];
+    _.map(fsImageList,
         function(item) {
             var url = item['maxImageUrl'];
+            if (!url) {
+                url = item['displayImgUrl'];
+            }
             if (url) {
                 add_url(data, context, url);
             }
