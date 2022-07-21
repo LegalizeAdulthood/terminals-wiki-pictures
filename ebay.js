@@ -47,7 +47,8 @@ function scrape_data(context, html) {
             filenames: {}
         };
 
-    data.seller = $('div.si-content span.mbg-nw').html();
+    data.seller = $('div.ux-seller-section__item--seller').text();
+    data.seller = data.seller.substr(0, data.seller.indexOf(' '));
     _.map(
         _.find(JSON.parse(json_sanitize(args)),
             function(item) {
