@@ -69,7 +69,7 @@ var context = {
             "| personality4 =",
             "| personality5 =",
             "| personality6 =",
-            "| persaonlity7 =",
+            "| personality7 =",
             "| terminfo =",
             "}}",
             "",
