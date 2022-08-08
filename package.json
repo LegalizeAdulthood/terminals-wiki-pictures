@@ -1,0 +1,16 @@
+{
+  "name": "terminals-wiki-pictures",
+  "version": "0.0.0",
+  "description": "TerminalsWikiPictures",
+  "main": "app.js",
+  "author": {
+    "name": ""
+  },
+  "dependencies": {
+    "async": "^3.2.4",
+    "cheerio": "^1.0.0-rc.12",
+    "nodemw": "^0.18.0",
+    "request": "2.88.2",
+    "underscore": "^1.13.4"
+  }
+}
