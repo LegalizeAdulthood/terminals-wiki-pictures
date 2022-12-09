@@ -55,17 +55,27 @@ function scrape_data(context, html) {
             function(item) {
                 return item[0] === 'ebay.viewItem.PicturePanel';
             });
-    var fsImageList = picturePanel[2]['fsImgList'];
-    _.map(fsImageList,
-        function(item) {
-            var url = item['maxImageUrl'];
-            if (!url) {
-                url = item['displayImgUrl'];
-            }
-            if (url) {
+    if (picturePanel) {
+        var fsImageList = picturePanel[2]['fsImgList'];
+        _.map(fsImageList,
+            function(item) {
+                var url = item['maxImageUrl'];
+                if (!url) {
+                    url = item['displayImgUrl'];
+                }
+                if (url) {
+                    add_url(data, context, url);
+                }
+            });
+    } else {
+        args = '{"p":"PICTURE"' + text_between('"PICTURE"', html, ')</script>');
+        args = JSON.parse(args);
+        _.map(args['w'][0][2]['model']['mediaList'],
+            function(item) {
+                url = item['image']['zoomImg']['URL'];
                 add_url(data, context, url);
-            }
-        });
+            });
+    }
     $('img').each(
         function(i, img) {
             var src = $(this).attr('src');
