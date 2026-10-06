@@ -2,7 +2,6 @@ var _ = require('underscore');
 var async = require('async');
 var bot = require('nodemw');
 var ebay = require('./ebay.js');
-var util = require('util');
 var debug = false;
 
 var wiki;
@@ -159,7 +158,7 @@ exports.upload_pictures = function(server, args) {
     async.series([ _.partial(ebay.get_auction_data, context), transfer_pictures, add_gallery_markup ],
         function(err, results) {
             if (err) {
-                util.log('ERROR: ' + err);
+                console.error('ERROR: ' + err);
                 throw err;
             }
         });
@@ -177,7 +176,7 @@ exports.download_pictures = function(args) {
     async.series([ _.partial(ebay.get_auction_data, context), download_auction_pictures ],
         function(err, results) {
             if (err) {
-                util.log("ERROR: " + err);
+                console.error("ERROR: " + err);
                 throw err;
             }
         });

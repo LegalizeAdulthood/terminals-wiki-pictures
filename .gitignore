@@ -1,4 +1,8 @@
 pictures
 *.bat
+!terminals.bat
 .vs
 node_modules
+.browser-profile/
+.browser-profile-brave/
+.npm-cache/
